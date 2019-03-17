@@ -1,28 +1,25 @@
-const Configuration = require("../app/configuration");
-const Service = require("../app/service");
-const Record = require("../app/record");
+const Configuration = require('../app/configuration');
+const Service = require('../app/service');
+const Record = require('../app/record');
 
-const credentials = require("./credentials");
+const credentials = require('./credentials');
 const config = new Configuration(credentials);
 const service = new Service(config);
 
 service
     .init()
-    .then((/*client*/) => {
+    .then((/* client*/) => {
+      const recordRef = new Record.Types.CustomRecordRef();
+      recordRef.internalId = 901;
+      recordRef.typeId = 496;
 
-        const recordRef = new Record.Types.CustomRecordRef();
-        recordRef.internalId = 901;
-        recordRef.typeId = 496;
-
-        return service.get(recordRef);
+      return service.get(recordRef);
     }).then((result) => {
-
-    console.log("result");
-    console.log(JSON.stringify(result));
-
-}).catch(function (err) {
-    console.log("error");
-    console.log(service.config.client.lastRequest);
-    console.log("message");
-    console.log(JSON.stringify(err));
-});
+      console.log('result');
+      console.log(JSON.stringify(result));
+    }).catch(function(err) {
+      console.log('error');
+      console.log(service.config.client.lastRequest);
+      console.log('message');
+      console.log(JSON.stringify(err));
+    });

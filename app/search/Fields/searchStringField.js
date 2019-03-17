@@ -1,14 +1,13 @@
-"use strict";
+'use strict';
 
-const SearchField = require("./common/searchField");
+const SearchField = require('./common/searchField');
 
 class SearchStringField extends SearchField {
-
-    constructor() {
-        super();
-        this._type = "platformCore";
-        this._name = "SearchStringField";
-    }
+  constructor() {
+    super();
+    this._type = 'platformCore';
+    this._name = 'SearchStringField';
+  }
 }
 
 module.exports = SearchStringField;

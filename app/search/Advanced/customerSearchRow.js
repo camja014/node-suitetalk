@@ -1,14 +1,13 @@
-"use strict";
+'use strict';
 
-const SearchRow = require("./common/searchRow");
+const SearchRow = require('./common/searchRow');
 
 class customerSearchRow extends SearchRow {
-
-    constructor() {
-        super();
-        this._name = "customerSearchRow";
-        this._type = "listRel";
-    }
+  constructor() {
+    super();
+    this._name = 'customerSearchRow';
+    this._type = 'listRel';
+  }
 }
 
 module.exports = customerSearchRow;

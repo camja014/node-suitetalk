@@ -1,14 +1,13 @@
-"use strict";
+'use strict';
 
-const SearchColumn = require("./common/searchColumn");
+const SearchColumn = require('./common/searchColumn');
 
 class SearchColumnLongCustomField extends SearchColumn {
-
-    constructor() {
-        super();
-        this._type = "platformCore";
-        this._name = "SearchColumnLongCustomField";
-    }
+  constructor() {
+    super();
+    this._type = 'platformCore';
+    this._name = 'SearchColumnLongCustomField';
+  }
 }
 
 module.exports = SearchColumnLongCustomField;
