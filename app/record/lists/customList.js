@@ -1,15 +1,14 @@
-"use strict";
+'use strict';
 
-const List = require("./common/list");
+const List = require('./common/list');
 
 class CustomList extends List {
-
-    constructor() {
-        super();
-        this._type = "setupCustom";
-        this._name = "CustomList";
-        this._listName = "customList";
-    }
+  constructor() {
+    super();
+    this._type = 'setupCustom';
+    this._name = 'CustomList';
+    this._listName = 'customList';
+  }
 }
 
 module.exports = CustomList;

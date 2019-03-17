@@ -1,16 +1,15 @@
-"use strict";
+'use strict';
 
-const BaseObject = require("../baseObject");
+const BaseObject = require('../baseObject');
 
 class SearchRecord extends BaseObject {
+  constructor() {
+    super();
+  }
 
-    constructor() {
-        super();
-    }
-
-    _getSoapType() {
-        return "searchRecord";
-    }
+  _getSoapType() {
+    return 'searchRecord';
+  }
 }
 
 module.exports = SearchRecord;

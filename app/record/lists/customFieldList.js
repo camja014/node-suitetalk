@@ -1,67 +1,65 @@
-"use strict";
+'use strict';
 
-const BaseObject = require("../../baseObject");
+const BaseObject = require('../../baseObject');
 
 class CustomFieldList extends BaseObject {
+  constructor() {
+    super();
+    this.customFields = [];
+  }
 
-    constructor() {
-        super();
-        this.customFields = [];
+  _getSoapType() {
+    return `${this._type}:customFieldList`;
+  }
+
+  _getAttributes() {
+    return '';
+  }
+
+  getNode() {
+    const attributes = this._getAttributes();
+    const type = this._getSoapType();
+
+    if (!type) {
+      throw new Error(`Invalid SOAP type ${type}`);
     }
 
-    _getSoapType() {
-        return `${this._type}:customFieldList`;
+    const node = {};
+
+    node[type] = {};
+
+    if (attributes) {
+      node[type]['$attributes'] = attributes;
     }
 
-    _getAttributes() {
-        return "";
-    }
+    const xml = [];
 
-    getNode() {
+    // Node soap is not friendly to arrays. Outputs as object.
+    this.customFields.map((el) => {
+      const t = el._getSoapType();
+      const e = el.getNode()[t];
+      const a = e[['$attributes']];
+      const v = e[['$value']];
 
-        const attributes = this._getAttributes();
-        const type = this._getSoapType();
+      xml.push(`<platformCore:customField xsi:type="${a['xsi:type']}" `);
 
-        if (!type) {
-            throw new Error(`Invalid SOAP type ${type}`);
-        }
+      if (a['scriptId']) {
+        xml.push(`scriptId="${a['scriptId']}" `);
+      }
 
-        const node = {};
+      if (a['internalId']) {
+        xml.push(`internalId="${a['internalId']}" `);
+      }
 
-        node[type] = {};
+      xml.push(`>`);
+      xml.push(`<platformCore:value>${v}</platformCore:value>`);
+      xml.push('</platformCore:customField>');
+    });
 
-        if (attributes) {
-            node[type]["$attributes"] = attributes;
-        }
+    node[type]['$xml'] = xml.join('');
 
-        const xml = [];
-
-        // Node soap is not friendly to arrays. Outputs as object.
-        this.customFields.map((el) => {
-            const t = el._getSoapType();
-            const e = el.getNode()[t];
-            const a = e[["$attributes"]];
-            const v = e[["$value"]];
-
-            xml.push(`<platformCore:customField xsi:type="${a["xsi:type"]}" `);
-
-            if (a["scriptId"]) {
-                xml.push(`scriptId="${a["scriptId"]}" `);
-            }
-
-            if (a["internalId"]) {
-                xml.push(`internalId="${a["internalId"]}" `);
-            }
-
-            xml.push(`>`);
-            xml.push(`<platformCore:value>${v}</platformCore:value>`);
-            xml.push("</platformCore:customField>");
-        });
-
-        node[type]["$xml"] = xml.join("");
-
-        return node;
-    }
+    return node;
+  }
 }
 
 module.exports = CustomFieldList;

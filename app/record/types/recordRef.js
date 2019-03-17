@@ -1,13 +1,12 @@
-"use strict";
+'use strict';
 
-const Reference = require("./common/reference");
+const Reference = require('./common/reference');
 
 class RecordRef extends Reference {
-
-    constructor() {
-        super();
-        this._reference = "RecordRef";
-    }
+  constructor() {
+    super();
+    this._reference = 'RecordRef';
+  }
 }
 
 module.exports = RecordRef;

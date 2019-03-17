@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
 const Soap = {
-    RequestPreferences: require("./requestPreferences"),
+  RequestPreferences: require('./requestPreferences'),
 };
 
 module.exports = Soap;

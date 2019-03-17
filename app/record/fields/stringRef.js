@@ -1,13 +1,12 @@
-"use strict";
+'use strict';
 
-const Field = require("./common/field");
+const Field = require('./common/field');
 
 class StringRef extends Field {
-
-    constructor() {
-        super();
-        this._fieldType = "string";
-    }
+  constructor() {
+    super();
+    this._fieldType = 'string';
+  }
 }
 
 module.exports = StringRef;
