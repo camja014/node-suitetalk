@@ -4,10 +4,11 @@ const Types = {
   BillingAccount: require('./billingAccount'),
   CashSale: require('./cashSale'),
   Contact: require('./contact'),
-  Customer: require('./customer'),
-  CustomerStatus: require('./customerStatus'),
   CustomRecord: require('./customRecord'),
   CustomRecordRef: require('./customRecordRef'),
+  Customer: require('./customer'),
+  CustomerPayment: require('./customerPayment'),
+  CustomerStatus: require('./customerStatus'),
   EntityGroup: require('./entityGroup'),
   Estimate: require('./estimate'),
   Invoice: require('./invoice'),
@@ -18,7 +19,6 @@ const Types = {
   RecordRef: require('./recordRef'),
   SalesOrder: require('./salesOrder'),
   Vendor: require('./vendor'),
-
 };
 
 module.exports = Types;
