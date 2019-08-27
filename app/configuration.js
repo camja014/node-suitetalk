@@ -111,23 +111,23 @@ function _validateConfiguration(configuration) {
  */
 function _getNameSpaces(configuration) {
   return {
-    actSched: `urn:scheduling_${configuration.apiVersion}.activities.webservices.netsuite.com`,
-    fileCabinet: `urn:filecabinet_${configuration.apiVersion}.documents.webservices.netsuite.com`,
-    listAcct: `urn:accounting_${configuration.apiVersion}.lists.webservices.netsuite.com`,
-    listEmp: `urn:employees_${configuration.apiVersion}.lists.webservices.netsuite.com`,
-    listMkt: `urn:marketing_${configuration.apiVersion}.lists.webservices.netsuite.com`,
-    listRel: `urn:relationships_${configuration.apiVersion}.lists.webservices.netsuite.com`,
-    listSupport: `urn:support_${configuration.apiVersion}.lists.webservices.netsuite.com`,
-    listWebsite: `urn:website_${configuration.apiVersion}.lists.webservices.netsuite.com`,
-    platformCommon: `urn:common_${configuration.apiVersion}.platform.webservices.netsuite.com`,
-    platformCore: `urn:core_${configuration.apiVersion}.platform.webservices.netsuite.com`,
-    platformMsgs: `urn:messages_${configuration.apiVersion}.platform.webservices.netsuite.com`,
-    setupCustom: `urn:customization_${configuration.apiVersion}.setup.webservices.netsuite.com`,
-    tranBank: `urn:bank_${configuration.apiVersion}.transactions.webservices.netsuite.com`,
-    tranCust: `urn:customers_${configuration.apiVersion}.transactions.webservices.netsuite.com`,
-    tranGeneral: `urn:general_${configuration.apiVersion}.transactions.webservices.netsuite.com`,
-    tranInvt: `urn:inventory_${configuration.apiVersion}.transactions.webservices.netsuite.com`,
-    tranSales: `urn:sales_${configuration.apiVersion}.transactions.webservices.netsuite.com`,
+    actSched       : `urn:scheduling_${configuration.apiVersion}.activities.webservices.netsuite.com`,
+    fileCabinet    : `urn:filecabinet_${configuration.apiVersion}.documents.webservices.netsuite.com`,
+    listAcct       : `urn:accounting_${configuration.apiVersion}.lists.webservices.netsuite.com`,
+    listEmp        : `urn:employees_${configuration.apiVersion}.lists.webservices.netsuite.com`,
+    listMkt        : `urn:marketing_${configuration.apiVersion}.lists.webservices.netsuite.com`,
+    listRel        : `urn:relationships_${configuration.apiVersion}.lists.webservices.netsuite.com`,
+    listSupport    : `urn:support_${configuration.apiVersion}.lists.webservices.netsuite.com`,
+    listWebsite    : `urn:website_${configuration.apiVersion}.lists.webservices.netsuite.com`,
+    platformCommon : `urn:common_${configuration.apiVersion}.platform.webservices.netsuite.com`,
+    platformCore   : `urn:core_${configuration.apiVersion}.platform.webservices.netsuite.com`,
+    platformMsgs   : `urn:messages_${configuration.apiVersion}.platform.webservices.netsuite.com`,
+    setupCustom    : `urn:customization_${configuration.apiVersion}.setup.webservices.netsuite.com`,
+    tranBank       : `urn:bank_${configuration.apiVersion}.transactions.webservices.netsuite.com`,
+    tranCust       : `urn:customers_${configuration.apiVersion}.transactions.webservices.netsuite.com`,
+    tranGeneral    : `urn:general_${configuration.apiVersion}.transactions.webservices.netsuite.com`,
+    tranInvt       : `urn:inventory_${configuration.apiVersion}.transactions.webservices.netsuite.com`,
+    tranSales      : `urn:sales_${configuration.apiVersion}.transactions.webservices.netsuite.com`,
   };
 }
 
@@ -180,9 +180,9 @@ function _createAuthHeader(configuration) {
 
   if (configuration.credentials) {
     soapObj['platformMsgs:passport'] = {
-      'platformCore:account': configuration.account,
-      'platformCore:email': configuration.credentials.email,
-      'platformCore:password': configuration.credentials.password,
+      'platformCore:account'  : configuration.account,
+      'platformCore:email'    : configuration.credentials.email,
+      'platformCore:password' : configuration.credentials.password,
     };
 
     if (configuration.credentials.role) {
@@ -204,12 +204,12 @@ function _createAuthHeader(configuration) {
     const o = getOAuthKeys(configuration);
 
     soapObj['platformMsgs:tokenPassport'] = {
-      'platformCore:account': o.account,
-      'platformCore:consumerKey': o.consumerKey,
-      'platformCore:nonce': o.nonce,
-      'platformCore:timestamp': o.timeStamp,
-      'platformCore:token': o.tokenKey,
-      'platformCore:version': '1.0',
+      'platformCore:account'     : o.account,
+      'platformCore:consumerKey' : o.consumerKey,
+      'platformCore:nonce'       : o.nonce,
+      'platformCore:timestamp'   : o.timeStamp,
+      'platformCore:token'       : o.tokenKey,
+      'platformCore:version'     : '1.0',
     };
 
     soapObj['platformMsgs:tokenPassport']['platformCore:signature'] = {
@@ -276,8 +276,8 @@ class Configuration {
       }
 
       soap.createClientAsync(wsdlPath, {
-        attributesKey: '$attributes',
-        namespaceArrayElements: false,
+        attributesKey          : '$attributes',
+        namespaceArrayElements : false,
       }).then((client) => {
         _.assign(client.wsdl.definitions.xmlns, _getNameSpaces(this.configuration));
         client.wsdl.xmlnsInEnvelope = client.wsdl._xmlnsMap();
